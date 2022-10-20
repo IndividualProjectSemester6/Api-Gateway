@@ -1,0 +1,8 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5112"
+  },
+  "Routes": [
+    {}
+  ]
+}
