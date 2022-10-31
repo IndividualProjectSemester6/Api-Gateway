@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotApiGateway", "src\OcelotApiGateway\OcelotApiGateway.csproj", "{857D02B1-A100-4828-9CA7-AEEDC567C77A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotApiGateway", "src\OcelotApiGateway\OcelotApiGateway.csproj", "{857D02B1-A100-4828-9CA7-AEEDC567C77A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthenticationManager", "JwtAuthenticationManager\JwtAuthenticationManager.csproj", "{C86E2DE9-9825-4ACE-B25B-066D0063EAFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{857D02B1-A100-4828-9CA7-AEEDC567C77A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{857D02B1-A100-4828-9CA7-AEEDC567C77A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{857D02B1-A100-4828-9CA7-AEEDC567C77A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C86E2DE9-9825-4ACE-B25B-066D0063EAFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C86E2DE9-9825-4ACE-B25B-066D0063EAFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C86E2DE9-9825-4ACE-B25B-066D0063EAFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C86E2DE9-9825-4ACE-B25B-066D0063EAFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
