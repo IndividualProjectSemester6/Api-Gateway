@@ -1,3 +1,4 @@
+using JwtAuthenticationManager.Handlers;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -14,6 +15,9 @@ builder.Services.AddSwaggerGen();
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 builder.Services.AddOcelot(builder.Configuration);
 
+// Add custom authenticator to the project:
+builder.Services.AddCustomJwtAuthentication();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,6 +31,7 @@ app.UseHttpsRedirection();
 
 app.UseOcelot();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

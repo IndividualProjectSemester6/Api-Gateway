@@ -7,6 +7,7 @@
     <UserSecretsId>1fbfc3f3-ab33-4a5b-b7bb-2119dab3380b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
+    <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,10 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\JwtAuthenticationManager\JwtAuthenticationManager.csproj" />
   </ItemGroup>
 
 </Project>

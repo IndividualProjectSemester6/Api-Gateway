@@ -4,6 +4,18 @@
   },
   "Routes": [
     {
+      "UpstreamPathTemplate": "/gateway/Account",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Account",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authenticationservice",
+          "Port": 80
+        }
+      ]
+    },
+    {
       "UpstreamPathTemplate": "/gateway/Movies",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "DownstreamPathTemplate": "/api/Movies",
@@ -13,7 +25,11 @@
           "Host": "localhost",
           "Port": 5113
         }
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "Administrator" ]
+      }
     },
     {
       "UpstreamPathTemplate": "/gateway/Movies/{id}",
