@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  ocelotapigateway:
+    image: ${DOCKER_REGISTRY-}ocelotapigateway
+    build:
+      context: .
+      dockerfile: src/OcelotApiGateway/Dockerfile
+    ports:
+        - 7186:443
+    networks:
+        - backend
+networks:
+    backend:
