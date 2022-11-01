@@ -3,6 +3,7 @@
     "BaseUrl": "http://localhost:5112"
   },
   "Routes": [
+    // Account microservice:
     {
       "UpstreamPathTemplate": "/gateway/Account",
       "UpstreamHttpMethod": [ "Post" ],
@@ -15,6 +16,7 @@
         }
       ]
     },
+    // Movies microservice:
     {
       "UpstreamPathTemplate": "/gateway/Movies",
       "UpstreamHttpMethod": [ "Get", "Post" ],
@@ -23,7 +25,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5113
+          "Port": 5000
         }
       ],
       "AuthenticationOptions": {
@@ -39,7 +41,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5113
+          "Port": 5000
         }
       ]
     },
@@ -51,7 +53,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5113
+          "Port": 5000
         }
       ]
     }
