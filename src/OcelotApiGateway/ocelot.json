@@ -10,7 +10,11 @@
           "Host": "host.docker.internal",
           "Port": 5000
         }
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
     {
       "UpstreamPathTemplate": "/gateway/Movies/{id}",

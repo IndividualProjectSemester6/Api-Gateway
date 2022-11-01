@@ -17,7 +17,7 @@ namespace OcelotApiGateway.Authentication
 
                 var content = Newtonsoft.Json.Linq.JObject.Parse(userRole.Value);
 
-                foreach (var role in content["Kinoroom"]["roles"])
+                foreach (var role in content["kinoroom"]["roles"])
                 {
                     claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, role.ToString()));
                 }
