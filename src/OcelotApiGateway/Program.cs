@@ -19,6 +19,9 @@ builder.Services.AddCors(c => c.AddPolicy(corsPolicy, corsPolicyBuilder =>
 
 builder.Services.AddOcelot(builder.Configuration);
 
+// Add custom claim authorizer to project:
+builder.Services.DecorateClaimAuthoriser();
+
 // Add custom JWT authentication to our project:
 builder.Services.ConfigureJWT(builder.Environment.IsDevelopment(), "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnvpN9dE+EerI1GtvdQnbpmtdAws3/TjvFy89EdhpoTi/dRBsCwnSkyPhcJ/q67wLRnlR5EItTKKjWlviO90gH5/7/TLUkFRAND+yJp0xBYePoJOCvRf9HjD55x25cpZqdXnr7L6ZsCDUfZAH2CxEjYB6OpwXwMMEHyCxtDwhpEEjPmAk2cYHSPyhWtxSTvo84PeCTdCQMKg3RxXqifeQ0+hnvb3bmS52sr6gy7I5POtJsVI8JHWNjB/cycv5S2pzFM+jfLjf4cOw3uFUSShjSkBwL1Y6hz/ps8GsK+e56bVkolqbeUA/2+Oyi6G+7pRVn1tgz/rYtmWocyRk5rbjNQIDAQAB");
 builder.Services.AddControllers();
@@ -49,7 +52,6 @@ builder.Services.AddSwaggerGen(c =>
 
 // Add Ocelot to the project with a config file.
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
-
 
 var app = builder.Build();
 
