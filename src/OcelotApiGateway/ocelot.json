@@ -29,7 +29,14 @@
           "Host": "host.docker.internal",
           "Port": 5000
         }
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "http$//schemas.microsoft.com/ws/2008/06/identity/claims/role": "Administrator"
+      }
     },
     {
       "UpstreamPathTemplate": "/gateway/Movies/",
@@ -41,7 +48,14 @@
           "Host": "host.docker.internal",
           "Port": 5000
         }
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "http$//schemas.microsoft.com/ws/2008/06/identity/claims/role": "Administrator"
+      }
     }
   ]
 }
