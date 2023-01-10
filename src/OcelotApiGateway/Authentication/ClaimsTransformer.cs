@@ -14,14 +14,11 @@ namespace OcelotApiGateway.Authentication
             if (claimsIdentity.IsAuthenticated && claimsIdentity.HasClaim((claim) => claim.Type == "realm_access"))
             {
                 var userRole = claimsIdentity.FindFirst((claim) => claim.Type == "realm_access");
-                Console.WriteLine("User role: " + userRole.ToString());
 
                 var content = Newtonsoft.Json.Linq.JObject.Parse(userRole.Value);
-                Console.WriteLine("Content: " + content.ToString());
 
                 foreach (var role in content["roles"])
                 {
-                    Console.WriteLine(role);
                     claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, role.ToString()));
                 }
             }

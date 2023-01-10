@@ -7,7 +7,7 @@ volumes:
 
 services:
   ocelotapigateway:
-    image: localhost/gateway:latest
+    image: localhost/ag:latest
     build:
       context: .
       dockerfile: Dockerfile
