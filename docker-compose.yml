@@ -7,45 +7,18 @@ volumes:
 
 services:
   ocelotapigateway:
-    image: ${DOCKER_REGISTRY-}ocelotapigateway
+    image: localhost/gateway:latest
     build:
       context: .
-      dockerfile: src/OcelotApiGateway/Dockerfile
+      dockerfile: Dockerfile
     ports:
         - 7186:443
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80;https://+:7186
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=Kinoroom
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/gateway.pfx
+    volumes:
+      - ~/.aspnet/https:/https:ro
     networks:
         - backend
-
-  keycloak:
-    image: quay.io/keycloak/keycloak:18.0.2
-    container_name: "keycloak"
-    command: start-dev
-    environment:
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
-      - KC_DB=postgres
-      - KC_DB_USERNAME=keycloak
-      - KC_DB_PASSWORD=keycloak
-      - KC_DB_URL=jdbc:postgresql://keycloak-database:5432/keycloak
-    volumes:
-      - ./backup:/tmp/import
-    ports:
-      - "2222:8080"
-    networks:
-      - backend
-    depends_on:
-      - keycloak-database
-
-  keycloak-database:
-    image: postgres:14.2
-    container_name: "keycloak-database"
-    environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: keycloak
-    ports:
-      - "2223:5432"
-    networks:
-      - backend
-    volumes:
-      - keycloak-database:/var/lib/postgresql/data

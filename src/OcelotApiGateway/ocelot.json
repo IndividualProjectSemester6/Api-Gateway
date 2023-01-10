@@ -2,13 +2,13 @@
   "Routes": [
     {
       "UpstreamPathTemplate": "/gateway/Movies",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "DownstreamPathTemplate": "/api/Movies",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamPathTemplate": "/movies-service/api/Movies",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "host.docker.internal",
-          "Port": 5000
+          "Host": "20.238.149.147",
+          "Port": 80
         }
       ],
       "AuthenticationOptions": {
@@ -17,17 +17,18 @@
       },
       "RouteClaimsRequirement": {
         "http$//schemas.microsoft.com/ws/2008/06/identity/claims/role": "Administrator"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "UpstreamPathTemplate": "/gateway/Movies/{id}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
-      "DownstreamPathTemplate": "/api/Movies/{id}",
+      "DownstreamPathTemplate": "/movies-service/api/Movies/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "host.docker.internal",
-          "Port": 5000
+          "Host": "10.136.0.26",
+          "Port": 80
         }
       ],
       "AuthenticationOptions": {
@@ -36,26 +37,8 @@
       },
       "RouteClaimsRequirement": {
         "http$//schemas.microsoft.com/ws/2008/06/identity/claims/role": "Administrator"
-      }
-    },
-    {
-      "UpstreamPathTemplate": "/gateway/Movies/",
-      "UpstreamHttpMethod": [ "Put" ],
-      "DownstreamPathTemplate": "/api/Movies/",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "host.docker.internal",
-          "Port": 5000
-        }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
       },
-      "RouteClaimsRequirement": {
-        "http$//schemas.microsoft.com/ws/2008/06/identity/claims/role": "Administrator"
-      }
+      "DangerousAcceptAnyServerCertificateValidator": true
     }
   ]
 }

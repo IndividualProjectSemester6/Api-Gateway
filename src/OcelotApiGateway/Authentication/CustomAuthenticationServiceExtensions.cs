@@ -18,7 +18,7 @@ namespace OcelotApiGateway.Authentication
             return issuerSigningKey;
         }
 
-        public static void ConfigureJWT(this IServiceCollection services, bool IsDevelopment, string jwtKey)
+        public static void ConfigureJWT(this IServiceCollection services, bool IsDevelopment, string jwtKey, string issuer)
         {
             services.AddTransient<IClaimsTransformation, ClaimsTransformer>();
 
@@ -31,7 +31,7 @@ namespace OcelotApiGateway.Authentication
 
             AuthenticationBuilder.AddJwtBearer("Bearer", options =>
             {
-                options.RequireHttpsMetadata = true;
+                options.RequireHttpsMetadata = false;
 
                 // Validate JWT Token:
 
@@ -39,7 +39,7 @@ namespace OcelotApiGateway.Authentication
                 {
                     ValidateAudience = false,
                     ValidateIssuer = false,
-                    ValidIssuers = new[] { "http://host.docker.internal:2222/realms/Kinoroom" },
+                    ValidIssuers = new[] { issuer },
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = BuildRsaKey(jwtKey),
                     ValidateLifetime = true
