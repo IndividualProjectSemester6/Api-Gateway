@@ -23,8 +23,10 @@ builder.Services.AddOcelot(builder.Configuration);
 builder.Services.DecorateClaimAuthoriser();
 
 // Add custom JWT authentication to our project:
-builder.Services.ConfigureJWT(builder.Environment.IsDevelopment(), "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnvpN9dE+EerI1GtvdQnbpmtdAws3/TjvFy89EdhpoTi/dRBsCwnSkyPhcJ/q67wLRnlR5EItTKKjWlviO90gH5/7/TLUkFRAND+yJp0xBYePoJOCvRf9HjD55x25cpZqdXnr7L6ZsCDUfZAH2CxEjYB6OpwXwMMEHyCxtDwhpEEjPmAk2cYHSPyhWtxSTvo84PeCTdCQMKg3RxXqifeQ0+hnvb3bmS52sr6gy7I5POtJsVI8JHWNjB/cycv5S2pzFM+jfLjf4cOw3uFUSShjSkBwL1Y6hz/ps8GsK+e56bVkolqbeUA/2+Oyi6G+7pRVn1tgz/rYtmWocyRk5rbjNQIDAQAB");
-builder.Services.AddControllers();
+string issuer = builder.Configuration.GetValue<string>("Keycloak:Issuer");
+string publicKey = builder.Configuration.GetValue<string>("Keycloak:PublicKey");
+builder.Services.ConfigureJWT(builder.Environment.IsDevelopment(), jwtKey: publicKey, issuer: issuer);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
