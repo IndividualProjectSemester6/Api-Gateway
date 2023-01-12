@@ -1,10 +1,5 @@
 version: '3.4'
 
-networks:
-    backend:
-volumes:
-  keycloak-database:
-
 services:
   ocelotapigateway:
     image: localhost/ag:latest
@@ -20,5 +15,3 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/gateway.pfx
     volumes:
       - ~/.aspnet/https:/https:ro
-    networks:
-        - backend
